@@ -1,7 +1,8 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { Failure } from '../models/failure';
 import { FailureService } from '../services/failureService';
-
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort'
 @Component({
   selector: 'app-failure-list',
   templateUrl: './failure-list.component.html',
@@ -12,9 +13,18 @@ import { FailureService } from '../services/failureService';
 export class FailureListComponent implements OnInit {
 
   public failures: Failure[] = [];
+  public displayedColumns: string[] = ['name', 'value'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
+  resultsLength = 0;
 
   constructor(private failureService: FailureService) {}
 
+  resetPaging(): void {
+    if (this.paginator) this.paginator.pageIndex = 0;
+  }
   ngOnInit(): void {
     this.getFailures()
   }
@@ -24,6 +34,7 @@ export class FailureListComponent implements OnInit {
       .subscribe((data: Failure[]) =>  {
         console.log("muito locoooooo!")
           this.failures = data
+          this.resultsLength = this.failures.length;
       });
   }
 }
