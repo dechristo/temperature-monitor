@@ -1,5 +1,9 @@
+import  { Location } from './location';
+
 export interface Failure {
   id: number
-  sensorName: string
-  errorValue: number
+  name: string
+  value: number
+  location: Location
+  datetime: number
 }

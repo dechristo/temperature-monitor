@@ -13,7 +13,7 @@ import {MatSort} from '@angular/material/sort'
 export class FailureListComponent implements OnInit {
 
   public failures: Failure[] = [];
-  public displayedColumns: string[] = ['name', 'value'];
+  public displayedColumns: string[] = ['date', 'name', 'value', 'city', 'country'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
@@ -26,13 +26,15 @@ export class FailureListComponent implements OnInit {
     if (this.paginator) this.paginator.pageIndex = 0;
   }
   ngOnInit(): void {
-    this.getFailures()
+    setTimeout(() => {
+      this.getFailures()
+    },10000);
   }
 
   getFailures() {
     this.failureService.getFailures()
       .subscribe((data: Failure[]) =>  {
-        console.log("muito locoooooo!")
+          console.log("Failures received: ", data);
           this.failures = data
           this.resultsLength = this.failures.length;
       });

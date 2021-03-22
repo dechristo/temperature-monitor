@@ -1,21 +1,21 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Failure } from "../models/failure";
+import { Location } from "../models/location";
 
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class FailureService {
+export class LocationService {
 
   constructor(private httpClient: HttpClient) {
 
   }
 
-  public getFailures(): Observable<Failure[]> {
-    const failures = this.httpClient.get<Failure[]>("http://localhost:3010/enriched-failures");
+  public getLocation(): Observable<Location[]> {
+    const failures = this.httpClient.get<Location[]>("http://localhost:3010/locations");
     return failures;
   }
 }
