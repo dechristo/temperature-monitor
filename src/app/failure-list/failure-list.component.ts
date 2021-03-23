@@ -26,9 +26,10 @@ export class FailureListComponent implements OnInit {
     if (this.paginator) this.paginator.pageIndex = 0;
   }
   ngOnInit(): void {
-    setTimeout(() => {
+    this.getFailures();
+    setInterval(() => {
       this.getFailures()
-    },10000);
+    },5000);
   }
 
   getFailures() {
