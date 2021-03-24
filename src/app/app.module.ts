@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SensorStatisticsComponent } from './sensor-statistics/sensor-statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FailureListComponent,
     SystemStatusComponent,
-    LocationListComponent
+    LocationListComponent,
+    SensorStatisticsComponent
   ],
   imports: [
     BrowserModule,

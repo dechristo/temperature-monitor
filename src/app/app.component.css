@@ -1,0 +1,16 @@
+.dashboard-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+  width: 100%;
+}
+
+.left-panel-dashboard {
+  flex: 0;
+}
+
+.right-panel-dashboard {
+  flex: 1;
+  margin-left: 700px;
+}

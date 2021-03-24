@@ -25,6 +25,7 @@ export class FailureListComponent implements OnInit {
   resetPaging(): void {
     if (this.paginator) this.paginator.pageIndex = 0;
   }
+
   ngOnInit(): void {
     this.getFailures();
     setInterval(() => {
@@ -35,9 +36,9 @@ export class FailureListComponent implements OnInit {
   getFailures() {
     this.failureService.getFailures()
       .subscribe((data: Failure[]) =>  {
-          console.log("Failures received: ", data);
-          this.failures = data
-          this.resultsLength = this.failures.length;
+        console.log(`${data.length} failures received for location service.`)
+        this.failures = data
+        this.resultsLength = this.failures.length;
       });
   }
 }
